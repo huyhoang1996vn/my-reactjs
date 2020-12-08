@@ -4,21 +4,6 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 
-
-// class ShoppingList extends React.Component{
-//   render(){
-//     return (
-//       <div className="shop">
-//          <ul>
-//           <li>Instagram</li>
-//           <li>WhatsApp</li>
-//           <li>Oculus</li>
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
-
 class Square extends React.Component{
   constructor(props){
     super(props);
@@ -35,32 +20,116 @@ class Square extends React.Component{
       <button 
         className="square" 
         // onClick={ () => {this.handleClick(); alert('clicked')}}>
-          onClick={ this.handleClick }>
-          {this.state.value}
+          onClick={ this.props.onClick }>
+          {this.props.value}
       </button>
     );
   }
 }
 
 class Board extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true,
+      winner: ""
+    };
+  }
+
+  changeXO = (e, id) => {
+    // if (this.state.value == "X"){
+    //   this.setState({ value: 'O'})
+    // }else{
+    //   this.setState({ value: 'X'})
+    // }
+    // this.setState({ id: id})
+    // console.log(" id ", id);
+    console.log("=======")
+    const squares = this.state.squares.slice();
+    squares[id] = this.state.xIsNext ? 'X': 'O';
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext
+    })
+
+    console.log(this.state.squares);
+    const winner = this.checkWinner();
+    console.log("======= winner ", this.state.winner);
+
+    if (winner != null){
+      this.setState({
+        winner: winner,
+      })
+    }
+    console.log("======= winner ", this.state.winner);
+
+  }
+
+  checkWinner = () => {
+    const squares = this.state.squares;
+    console.log("=======")
+
+    const winLine = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i =0; i <= winLine.length -1; i++){
+      const [a,b,c] = winLine[i];
+      if (squares[a] && squares[a] == squares[b] && squares[a] == squares[c]){
+        return squares[a]
+      }
+    }
+    return null
+  }
+
+
   render(){
     return (
       <div>
+        
         <div className="Square row">
-          <Square value={1}/>
-          <Square value={1}/>
-          <Square value={1}/>
+          <Square value={ this.state.squares[0] } onClick={ (event) => this.changeXO(event, 0) }/>
+          <Square value={ this.state.squares[1] } onClick={ (event) => this.changeXO(event, 1) }/>
+          <Square value={ this.state.squares[2] } onClick={ (event) => this.changeXO(event, 2) }/>
+        <div className="Square row">
+          <Square value={ this.state.squares[3] } onClick={ (event) => this.changeXO(event, 3) }/>
+          <Square value={ this.state.squares[4] } onClick={ (event) => this.changeXO(event, 4) }/>
+          <Square value={ this.state.squares[5] } onClick={ (event) => this.changeXO(event, 5) }/>
         </div>
         <div className="Square row">
-          <Square value={1}/>
-          <Square value={1}/>
-          <Square value={1}/>
+          <Square value={ this.state.squares[6] } onClick={ (event) => this.changeXO(event, 6) }/>
+          <Square value={ this.state.squares[7] } onClick={ (event) => this.changeXO(event, 7) }/>
+          <Square value={ this.state.squares[8] } onClick={ (event) => this.changeXO(event, 8) }/>
+        </div>
+
+
+        {/* <button onClick={ (event) => this.changeXO(event, 2) }>
+            Toggle Menu from Parent
+          <Square value={ this.state.id == 2 ? this.state.value: "" }/>
+        </button>
+        <button onClick={ (event) => this.changeXO(event, 3) }>
+            Toggle Menu from Parent
+          <Square value={ this.state.id == 3 ? this.state.value: "" }/>
+        </button> */}
+        </div>
+        {/* <div className="Square row">
+          <Square value={ this.state.id == 4 ? this.state.value: "" }/>
+          <Square value={ this.state.id == 1 ? this.state.value: "" }/>
+          <Square value={ this.state.id == 1 ? this.state.value: "" }/>
         </div>
         <div className="Square row">
-          <Square value={1}/>
-          <Square value={1}/>
-          <Square value={1}/>
-        </div>
+          <Square value={ this.state.id == 1 ? this.state.value: "" }/>
+          <Square value={ this.state.id == 1 ? this.state.value: "" }/>
+          <Square value={ this.state.id == 1 ? this.state.value: "" }/>
+        </div> */}
+        <h1>Winner: { this.state.winner }</h1>
       </div>
     );
   }
