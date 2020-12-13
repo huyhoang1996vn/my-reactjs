@@ -38,38 +38,23 @@ class Board extends React.Component{
   }
 
   changeXO = (e, id) => {
-    // if (this.state.value == "X"){
-    //   this.setState({ value: 'O'})
-    // }else{
-    //   this.setState({ value: 'X'})
-    // }
-    // this.setState({ id: id})
-    // console.log(" id ", id);
-    console.log("=======")
     const squares = this.state.squares.slice();
     squares[id] = this.state.xIsNext ? 'X': 'O';
     this.setState({
       squares: squares,
       xIsNext: !this.state.xIsNext
+    }, () =>{
+      const winner = this.checkWinner();
+      if (winner != null){
+        this.setState({
+          winner: winner,
+        })
+      }
     })
-
-    console.log(this.state.squares);
-    const winner = this.checkWinner();
-    console.log("======= winner ", this.state.winner);
-
-    if (winner != null){
-      this.setState({
-        winner: winner,
-      })
-    }
-    console.log("======= winner ", this.state.winner);
-
   }
 
   checkWinner = () => {
     const squares = this.state.squares;
-    console.log("=======")
-
     const winLine = [
       [0, 1, 2],
       [3, 4, 5],
@@ -135,10 +120,39 @@ class Board extends React.Component{
   }
 }
 
+class Clock extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = { date: new Date()};
+    setInterval(this.runClock(), 1000);
+  }
+  runClock = () => {
+    // this.setState( {date: new Date()});
+    // return new Date().toLocaleTimeString()
+    setInterval(() => { 
+      this.setState({
+        date: new Date()
+      })
+  }, 1000);
+    
+  }
+  render(){
+    return (
+      <div>
+        <h1>ĐÂU PHẢI ĐƠN GIẢN</h1>
+        Show lock: { this.state.date.toLocaleTimeString() }
+
+      </div>
+    );
+  }
+}
+
+
 class Game extends React.Component{
   render(){
     return (
       <div className="Game">
+        <Clock/>
         <h1>Game XO</h1>
         <Board/>
       </div>
