@@ -24,7 +24,13 @@ function Home() {
         >
             Game
         </a>
-
+        <a
+            className="App-link"
+            href="/contact"
+            rel="noopener noreferrer"
+        >
+            Contact
+        </a>
       </header>
     </div>
   )
