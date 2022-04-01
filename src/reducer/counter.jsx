@@ -1,7 +1,7 @@
 
 
 const changeNumber = (state, action)=>{
-    if (action.type=="increase"){
+    if (action.type=="INCREASE"){
         console.log("===== state", state);
         console.log("===== action", action);
         let new_value = state + action.value;
@@ -10,4 +10,21 @@ const changeNumber = (state, action)=>{
         return {number: new_value}
     }
 }
-export default changeNumber;
+
+
+
+const initialState = {
+    count: 0
+  };
+  
+
+function reducer(state = initialState, action) {
+    switch(action.type) {
+        case 'INCREMENT':
+        return { count: state.count + action.num };
+        default:
+        return state;
+    }
+}
+
+export default reducer;
