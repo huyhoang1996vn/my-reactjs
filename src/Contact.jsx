@@ -12,16 +12,31 @@ const ContactForm = () =>{
         setName("");
     }
 
+    const onChange = (e)=>setName(e.target.value);
+
     return <div>
-        <p>Add new</p>
-        <form onSubmit={formSubmit}>
-            <input type="text" onChange={(e)=>{setName(e.target.value)}} value={name}/>
-            <input type="submit" value="submit"/>
-        </form>
+        <AddForm data={name} changeInput={onChange} formSubmit={formSubmit}/>
+        <ListForm data={names} />
+    </div>
+}
+
+const ListForm = (props)=>{
+    let names = props.data;
+    return <div>
         {names.map((e, i)=><p key={i} >{e}</p>)}
     </div>
 }
 
+const AddForm = (props)=>{
+    let name = props.data;
+    return <div>
+    <p>Add new</p>
+    <form onSubmit={props.formSubmit}>
+        <input type="text" onChange={props.changeInput} value={name}/>
+        <input type="submit" value="submit"/>
+    </form>
+    </div>
+}
 
 
 export default ContactForm;
