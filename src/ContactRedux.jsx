@@ -1,27 +1,55 @@
-import React from 'react';
-import {incrementCounter} from './action/number'
+
+import { useEffect, useState } from 'react';
+import {addItemAction} from './action/addItemAction'
 import { connect } from 'react-redux';
 
+const ContactRedux = (props) =>{
+    // const [names, setNames] = useState(props.data);
+    const [name, setName] = useState("");
 
-function ContactInside(props){
-    function handleClick() {
-        let count = 0;
-        props.incrementCounter(1);
-      }
-      return <div>
-      <p>Result {props.count}</p>
-      <button onClick={handleClick}>Increment</button>
-      </div>;
+    const formSubmit =(e)=>{
+        e.preventDefault();
+        // setNames((preState)=>([...preState, name]));
+        props.addItemAction(name);
+        setName("");
+    }
+
+    const onChange = (e)=>setName(e.target.value);
+
+    return <div>
+        <AddForm data={name} changeInput={onChange} formSubmit={formSubmit}/>
+        <ListForm data={props.data} />
+    </div>
 }
 
-function mapStateToProps(state) {
-    return state
-  }
+const ListForm = (props)=>{
+    let names = props.data;
+    return <div>
+        {names.map((e, i)=><p key={i} >{e}</p>)}
+    </div>
+}
+
+const AddForm = (props)=>{
+    let name = props.data;
+    return <div>
+    <p>Add new in Redux</p>
+    <form onSubmit={props.formSubmit}>
+        <input type="text" onChange={props.changeInput} value={name}/>
+        <input type="submit" value="submit"/>
+    </form>
+    </div>
+}
+
+
+function mapStateToProps(stateRedux) {
+        // return stateRedux
+        // Add name reducer if have many reducer
+        return stateRedux.addItemReducer
+    }
 
 const mapDispatchToProps = {
-    incrementCounter
+    addItemAction
 }  
 
-const Contact = connect(mapStateToProps, mapDispatchToProps)(ContactInside);
 
-export default Contact;
+export default connect(mapStateToProps, mapDispatchToProps)(ContactRedux);

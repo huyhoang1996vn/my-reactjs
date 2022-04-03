@@ -6,9 +6,20 @@ import App from './App'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import reducer from './reducer/counter'
-import { createStore } from '@reduxjs/toolkit';
+import addItemReducer from './reducer/addItemReducer'
 
-const store = createStore(reducer);
+
+import { createStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+
+const reducers = combineReducers({
+  reducer,
+  addItemReducer
+});
+
+const store = createStore(reducers)
+console.log(store.getState());
+
 
 ReactDOM.render(
   <Provider store={store}>
