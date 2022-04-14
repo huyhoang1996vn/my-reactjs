@@ -5,6 +5,8 @@ import Home from './Home'
 import CounterForm from './components/CounterRedux'
 import ContactForm from './components/Contact'
 import ContactRedux from './components/ContactRedux'
+import CounterReduxHook from './components/ContactReduxHook'
+
 
 
 import {
@@ -22,6 +24,7 @@ function App() {
         <Route exact path="/redux" element={<CounterForm />}/>
         <Route exact path="/contact" element={<ContactForm />}/>
         <Route exact path="/contact-redux" element={<ContactRedux />}/>
+        <Route exact path="/contact-redux-hook" element={<CounterReduxHook />}/>
 
       </Routes>
     </>

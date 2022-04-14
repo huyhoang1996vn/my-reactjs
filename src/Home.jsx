@@ -38,6 +38,13 @@ function Home() {
         >
             Contact in Redux
         </a>
+        <a
+            className="App-link"
+            href="/contact-redux-hook"
+            rel="noopener noreferrer"
+        >
+            Contact in Redux Hook
+        </a>
       </header>
     </div>
   )
