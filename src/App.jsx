@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Game from './Game'
+import Game from './components/Game'
 import Home from './Home'
-import CounterForm from './CounterRedux'
-import ContactForm from './Contact'
-import ContactRedux from './ContactRedux'
+import CounterForm from './components/CounterRedux'
+import ContactForm from './components/Contact'
+import ContactRedux from './components/ContactRedux'
 
 
 import {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {incrementCounter} from './action/number'
+import {incrementCounter} from '../action/number'
 import { connect } from 'react-redux';
 
 
@@ -15,7 +15,6 @@ function CounterForm(props){
 }
 
 function mapStateToProps(stateRedux) {
-    console.log("=== stateRedux ", stateRedux);
         // return stateRedux
         // Add name reducer if have many reducer
         return stateRedux.reducer

@@ -1,15 +1,13 @@
 
 import { useEffect, useState } from 'react';
-import {addItemAction} from './action/addItemAction'
+import {addItemAction} from '../action/addItemAction'
 import { connect } from 'react-redux';
 
 const ContactRedux = (props) =>{
-    // const [names, setNames] = useState(props.data);
     const [name, setName] = useState("");
 
     const formSubmit =(e)=>{
         e.preventDefault();
-        // setNames((preState)=>([...preState, name]));
         props.addItemAction(name);
         setName("");
     }
