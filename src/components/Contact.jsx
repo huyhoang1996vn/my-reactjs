@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const ContactForm = () =>{
     const defaultName = ["steve", "tony", "gerrard"];

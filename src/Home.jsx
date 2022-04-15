@@ -26,6 +26,13 @@ function Home() {
         </a>
         <a
             className="App-link"
+            href="/redux"
+            rel="noopener noreferrer"
+        >
+            Redux counter
+        </a>
+        <a
+            className="App-link"
             href="/contact"
             rel="noopener noreferrer"
         >
@@ -33,7 +40,7 @@ function Home() {
         </a>
         <a
             className="App-link"
-            href="/redux"
+            href="/contact-redux"
             rel="noopener noreferrer"
         >
             Contact in Redux

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Game from './components/Game'
 import Home from './Home'
@@ -12,7 +11,6 @@ import CounterReduxHook from './components/ContactReduxHook'
 import {
   Routes,
   Route,
-  useLocation
 } from 'react-router-dom';
 
 function App() {

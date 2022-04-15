@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../index.css';
-import reportWebVitals from '../reportWebVitals';
 
 
 class Square extends React.Component {
@@ -67,7 +65,7 @@ class Board extends React.Component {
         ];
         for (let i = 0; i <= winLine.length - 1; i++) {
             const [a, b, c] = winLine[i];
-            if (squares[a] && squares[a] == squares[b] && squares[a] == squares[c]) {
+            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
                 return squares[a]
             }
         }

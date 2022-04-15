@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 function CounterForm(props){
     function handleClick() {
-        let count = 0;
         props.incrementCounter(2);
       }
       return <div>

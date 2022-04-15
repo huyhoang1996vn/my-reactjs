@@ -1,24 +1,30 @@
-import React from 'react';
-import {incrementCounter} from '../action/number'
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 
 const CounterReduxHook = ()=>{
-    const counter = useSelector(stateRedux=>stateRedux.reducer);
+    const [user, setUser]=useState("");
+    const data = useSelector(stateRedux=>stateRedux.addItemReducer);
     const dispatch = useDispatch();
 
-    console.log("=== counter ", counter)
-    const handleClick = ()=>{
-        dispatch({ 
-            type: 'INCREMENT', 
-            num: 2 
-        });
-      }
-      return <div>
-      <p>Result {counter.count}</p>
-      {/* <button onClick={()=>dispatch({type: 'INCREMENT', num: 2 })}>Increment</button> */}
-      <button onClick={handleClick}>Increment</button>
-      </div>;
+    return (
+        <div>
+            <p>List User of react hook</p>
+            <form onSubmit={
+                    (e)=>{
+                        e.preventDefault();
+                        dispatch({type: 'INCREMENT', data: user});
+                        setUser("");
+                    }
+                }>
+                <input type="text" onChange={(e)=>{setUser(e.target.value)}} value={user}/>
+                <input type="submit" value="submit"/>
+            </form>
+            {data.data.map((e, i)=><p key={i}>{e}</p>)}
+        </div>
+    )
+
+
 }
 
 export default CounterReduxHook;
