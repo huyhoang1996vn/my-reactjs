@@ -52,6 +52,13 @@ function Home() {
         >
             Contact in Redux Hook
         </a>
+        <a
+            className="App-link"
+            href="/useEffect"
+            rel="noopener noreferrer"
+        >
+            UseEffect
+        </a>
       </header>
     </div>
   )

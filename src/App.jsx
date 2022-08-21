@@ -5,6 +5,7 @@ import CounterForm from './components/CounterRedux'
 import ContactForm from './components/Contact'
 import ContactRedux from './components/ContactRedux'
 import CounterReduxHook from './components/ContactReduxHook'
+import FormUseEffect from './components/FormUseEffect'
 
 
 
@@ -23,7 +24,7 @@ function App() {
         <Route exact path="/contact" element={<ContactForm />}/>
         <Route exact path="/contact-redux" element={<ContactRedux />}/>
         <Route exact path="/contact-redux-hook" element={<CounterReduxHook />}/>
-
+        <Route exact path="/useEffect" element={<FormUseEffect />}/>
       </Routes>
     </>
   );
