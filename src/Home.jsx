@@ -59,6 +59,13 @@ function Home() {
         >
             UseEffect
         </a>
+        <a
+            className="App-link"
+            href="/get-express"
+            rel="noopener noreferrer"
+        >
+            Get Express Data
+        </a>
       </header>
     </div>
   )

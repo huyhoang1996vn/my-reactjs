@@ -15,14 +15,15 @@ componentWillUnmount()
 
 /*
 Role giving dependencies in useEffect:
-- An empty array acts: it only runs once (like componentDidMount as in).
-
-- No value acts, it runs first on mount and then on every re-render. 
- (as both componentDidMount and componentDidUpdate)
 
 - An array with any value inside, 
   eg , [variable1] will only execute the code inside your useEffect hook ONCE on mount, 
   as well as whenever that particular variable (variable1) changes.
+
+- An empty array acts: it only runs once (like componentDidMount as in).
+
+- No value acts, it runs first on mount and then on every re-render. 
+ (as both componentDidMount and componentDidUpdate)
 */
 
 export default function FormUseEffect() {

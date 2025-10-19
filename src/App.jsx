@@ -6,6 +6,7 @@ import ContactForm from './components/Contact'
 import ContactRedux from './components/ContactRedux'
 import CounterReduxHook from './components/ContactReduxHook'
 import FormUseEffect from './components/FormUseEffect'
+import GetExpressData from './components/GetExpressData'
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/contact-redux" element={<ContactRedux />}/>
         <Route exact path="/contact-redux-hook" element={<CounterReduxHook />}/>
         <Route exact path="/useEffect" element={<FormUseEffect />}/>
+        <Route exact path="/get-express" element={<GetExpressData />}/>
       </Routes>
     </>
   );
